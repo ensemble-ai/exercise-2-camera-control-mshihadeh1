@@ -4,8 +4,8 @@
 [ext_resource type="Script" path="res://scripts/camera_selector.gd" id="2_qffo5"]
 [ext_resource type="Script" path="res://scripts/debug_camera.gd" id="3_4fllx"]
 [ext_resource type="PackedScene" uid="uid://bu80st6dhcnla" path="res://scenes/controlled_camera.tscn" id="3_ttnp6"]
+[ext_resource type="Script" path="res://scripts/camera_controllers/fourway_speedup.gd" id="4_4jbtn"]
 [ext_resource type="PackedScene" uid="uid://kafb18nsdh54" path="res://scenes/terrain_manager.tscn" id="4_josyl"]
-[ext_resource type="Script" path="res://scripts/camera_controllers/target_focus.gd" id="4_vq2g0"]
 [ext_resource type="AudioStream" uid="uid://6tbtl0jk0dlo" path="res://assets/audio/VGMA Challenge - July 16th.wav" id="5_o8tm3"]
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_gbdaf"]
@@ -46,13 +46,17 @@ cameras = [NodePath("../PushBoxCamera"), NodePath("../PushBoxCamera2"), NodePath
 
 [node name="PushBoxCamera" parent="." node_paths=PackedStringArray("target") instance=ExtResource("3_ttnp6")]
 transform = Transform3D(1, 0, 0, 0, 1.19249e-08, 1, 0, -1, 1.19249e-08, 0, 30, 0)
-script = ExtResource("4_vq2g0")
-lead_speed = 300.0
-catchup_delay_duration = 0.5
-leash_distance = 30.0
-catchup_speed = 5.0
-cross_size = 2.5
+script = ExtResource("4_4jbtn")
+push_ratio = null
+pushbox_top_left = null
+pushbox_bottom_right = null
+speedup_zone_top_left = null
+speedup_zone_bottom_right = null
 target = NodePath("../Vessel")
+dist_above_target = null
+zoom_speed = null
+min_zoom = null
+max_zoom = null
 draw_camera_logic = true
 
 [node name="debug" type="Label" parent="PushBoxCamera"]
